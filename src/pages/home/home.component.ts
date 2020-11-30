@@ -3,7 +3,7 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { filter, tap } from "rxjs/operators";
 
-import { State } from "../../core/store/";
+import { State } from "../../store/";
 import { HomeState, homeState } from "./home.selectors";
 
 @Component({
@@ -22,9 +22,7 @@ export class HomeComponent implements OnInit {
       .pipe(
         // @ts-ignore
         filter((state: HomeState) => !!state),
-        tap((state: HomeState) => {
-          console.log(state);
-        })
+        tap((state: HomeState) => {})
       );
   }
 

@@ -1,18 +1,14 @@
 import { createSelector } from "@ngrx/store";
 
-import { user } from "../../core/store/user/user.selectors";
+import { user } from "../../store/user/user.selectors";
 
 export interface ContactState {
-  user: ECS.User;
+  user: ECS.User | undefined;
 }
 
 export const contactState = createSelector(
   user,
   (user): ContactState | undefined => {
-    if (!user) {
-      return;
-    }
-
     return {
       user
     };

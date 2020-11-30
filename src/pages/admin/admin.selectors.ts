@@ -1,6 +1,6 @@
 import { createSelector } from "@ngrx/store";
 
-import { user } from "../../core/store/user/user.selectors";
+import { user } from "../../store/user/user.selectors";
 
 export interface AdminState {
   user: ECS.User;

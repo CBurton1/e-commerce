@@ -3,7 +3,7 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { filter, tap } from "rxjs/operators";
 
-import { State } from "../../core/store";
+import { State } from "../../store";
 import { AboutState, aboutState } from "./about.selectors";
 
 @Component({

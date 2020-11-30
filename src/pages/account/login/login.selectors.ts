@@ -1,18 +1,14 @@
 import { createSelector } from "@ngrx/store";
 
-import { user } from "../../../core/store/user/user.selectors";
+import { user } from "../../../store/user/user.selectors";
 
 export interface LoginState {
-  user: ECS.User;
+  user: ECS.User | undefined;
 }
 
 export const loginState = createSelector(
   user,
   (user): LoginState | undefined => {
-    if (!user) {
-      return;
-    }
-
     return {
       user
     };
