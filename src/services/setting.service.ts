@@ -6,16 +6,16 @@ import { switchMap, map } from "rxjs/operators";
 @Injectable({
   providedIn: "root"
 })
-export class OrderService {
-  public lastVisible: QueryDocumentSnapshot<ECS.Order> | undefined;
+export class SettingService {
+  public lastVisible: QueryDocumentSnapshot<ECS.Setting> | undefined;
   constructor(private afs: AngularFirestore) {}
 
-  public createOrder(order: ECS.Order): Observable<ECS.Order> {
-    let ordersCollection: AngularFirestoreCollection<ECS.Order>;
-    ordersCollection = this.afs.collection<ECS.Order>("orders");
+  public createSetting(setting: ECS.Setting): Observable<ECS.Setting> {
+    let settingsCollection: AngularFirestoreCollection<ECS.Setting>;
+    settingsCollection = this.afs.collection<ECS.Setting>("settings");
 
     return from(
-      ordersCollection.add(order)
+      settingsCollection.add(setting)
     )
     .pipe(
       switchMap((documentReference) => {
@@ -25,14 +25,14 @@ export class OrderService {
         return {
           id: documentSnapshot.id,
           ...documentSnapshot.data()
-        } as ECS.Order;
+        } as ECS.Setting;
       })
     );
   }
 
-  public readOrders(limit?: number): Observable<ECS.Order[]> {
-    const ordersCollection: Observable<ECS.Order[]> =
-      from(this.afs.collection<ECS.Order>("orders", (ref) => {
+  public readSettings(limit?: number): Observable<ECS.Setting[]> {
+    const settingsCollection: Observable<ECS.Setting[]> =
+      from(this.afs.collection<ECS.Setting>("settings", (ref) => {
         const query = this.lastVisible ?
           ref.orderBy("id").startAfter(this.lastVisible) :
           ref.orderBy("id");
@@ -53,37 +53,37 @@ export class OrderService {
             return {
               ...data,
               id: documentSnapshot.id,
-            } as ECS.Order;
+            } as ECS.Setting;
           });
         })
       );
 
-    return ordersCollection;
+    return settingsCollection;
   }
 
-  public updateOrder(order: ECS.Order): Observable<ECS.Order> {
-    let ordersCollection: AngularFirestoreCollection<ECS.Order>;
-    ordersCollection = this.afs.collection<ECS.Order>("orders");
+  public updateSetting(setting: ECS.Setting): Observable<ECS.Setting> {
+    let settingsCollection: AngularFirestoreCollection<ECS.Setting>;
+    settingsCollection = this.afs.collection<ECS.Setting>("settings");
 
     return from(
-      ordersCollection.doc(order.id).update(order)
+      settingsCollection.doc(setting.id).update(setting)
     )
     .pipe(
       map(() => {
-        return order;
+        return setting;
       })
     );
   }
 
-  public deleteOrder(orderId: string): Observable<string> {
-    let ordersCollection: AngularFirestoreCollection<ECS.Order>;
-    ordersCollection = this.afs.collection<ECS.Order>("orders");
+  public deleteSetting(settingId: string): Observable<string> {
+    let settingsCollection: AngularFirestoreCollection<ECS.Setting>;
+    settingsCollection = this.afs.collection<ECS.Setting>("settings");
 
     return from(
-      ordersCollection.doc(orderId).delete()
+      settingsCollection.doc(settingId).delete()
     )
     .pipe(
-      map(() => orderId)
+      map(() => settingId)
     );
   }
 }

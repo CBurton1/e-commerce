@@ -30,7 +30,7 @@ export class UserService {
     );
   }
 
-  public readCategories(limit?: number): Observable<ECS.User[]> {
+  public readUsers(limit?: number): Observable<ECS.User[]> {
     const usersCollection: Observable<ECS.User[]> =
       from(this.afs.collection<ECS.User>("users", (ref) => {
         const query = this.lastVisible ?
@@ -75,12 +75,15 @@ export class UserService {
     );
   }
 
-  public deleteCoffeeUser(userId: string): Observable<void> {
+  public deleteUser(userId: string): Observable<string> {
     let usersCollection: AngularFirestoreCollection<ECS.User>;
     usersCollection = this.afs.collection<ECS.User>("users");
 
     return from(
       usersCollection.doc(userId).delete()
+    )
+    .pipe(
+      map(() => userId)
     );
   }
 }

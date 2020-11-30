@@ -20,27 +20,27 @@ import { SettingEffectsService } from "./setting/setting-effects.service";
 import { ProductEffectsService } from "./product/product-effects.service";
 
 export interface State {
-  category: fromCategory.State;
-  coupon: fromCoupon.State;
-  deal: fromDeal.State;
-  user: fromUser.State;
-  product: fromProduct.State;
-  router: fromRouter.State;
-  order: fromOrder.State;
-  cart: fromCart.State;
-  setting: fromSetting.State;
+  category: any;
+  coupon: any;
+  deal: any;
+  user: any;
+  product: any;
+  router: any;
+  order: any;
+  cart: any;
+  setting: any;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  category: fromCategory.reducer,
-  coupon: fromCoupon.reducer,
-  deal: fromDeal.reducer,
-  product: fromProduct.reducer,
+  category: fromCategory.categoryReducer,
+  coupon: fromCoupon.couponReducer,
+  deal: fromDeal.dealReducer,
+  product: fromProduct.productReducer,
   user: fromUser.reducer,
   router: fromRouter.reducer,
-  order: fromOrder.reducer,
+  order: fromOrder.orderReducer,
   cart: fromCart.reducer,
-  setting: fromSetting.reducer
+  setting: fromSetting.settingReducer
 };
 
 export const effects = [

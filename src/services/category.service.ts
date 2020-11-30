@@ -75,12 +75,15 @@ export class CategoryService {
     );
   }
 
-  public deleteCoffeeOrder(categoryId: string): Observable<void> {
+  public deleteCategory(categoryId: string): Observable<string> {
     let categoriesCollection: AngularFirestoreCollection<ECS.Category>;
     categoriesCollection = this.afs.collection<ECS.Category>("categories");
 
     return from(
       categoriesCollection.doc(categoryId).delete()
+    )
+    .pipe(
+      map(() => categoryId)
     );
   }
 }

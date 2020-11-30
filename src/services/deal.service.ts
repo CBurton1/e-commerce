@@ -11,11 +11,11 @@ export class DealService {
   constructor(private afs: AngularFirestore) {}
 
   public createDeal(deal: ECS.Deal): Observable<ECS.Deal> {
-    let dealCollection: AngularFirestoreCollection<ECS.Deal>;
-    dealCollection = this.afs.collection<ECS.Deal>("deals");
+    let dealsCollection: AngularFirestoreCollection<ECS.Deal>;
+    dealsCollection = this.afs.collection<ECS.Deal>("deals");
 
     return from(
-      dealCollection.add(deal)
+      dealsCollection.add(deal)
     )
     .pipe(
       switchMap((documentReference) => {
@@ -30,8 +30,8 @@ export class DealService {
     );
   }
 
-  public readCategories(limit?: number): Observable<ECS.Deal[]> {
-    const dealCollection: Observable<ECS.Deal[]> =
+  public readDeals(limit?: number): Observable<ECS.Deal[]> {
+    const dealsCollection: Observable<ECS.Deal[]> =
       from(this.afs.collection<ECS.Deal>("deals", (ref) => {
         const query = this.lastVisible ?
           ref.orderBy("id").startAfter(this.lastVisible) :
@@ -58,15 +58,15 @@ export class DealService {
         })
       );
 
-    return dealCollection;
+    return dealsCollection;
   }
 
   public updateDeal(deal: ECS.Deal): Observable<ECS.Deal> {
-    let dealCollection: AngularFirestoreCollection<ECS.Deal>;
-    dealCollection = this.afs.collection<ECS.Deal>("Deals");
+    let dealsCollection: AngularFirestoreCollection<ECS.Deal>;
+    dealsCollection = this.afs.collection<ECS.Deal>("deals");
 
     return from(
-      dealCollection.doc(deal.id).update(deal)
+      dealsCollection.doc(deal.id).update(deal)
     )
     .pipe(
       map(() => {
@@ -75,12 +75,16 @@ export class DealService {
     );
   }
 
-  public deleteCoffeeOrder(dealId: string): Observable<void> {
-    let dealCollection: AngularFirestoreCollection<ECS.Deal>;
-    dealCollection = this.afs.collection<ECS.Deal>("deals");
+  public deleteDeal(dealId: string): Observable<string> {
+    let dealsCollection: AngularFirestoreCollection<ECS.Deal>;
+    dealsCollection = this.afs.collection<ECS.Deal>("deals");
 
     return from(
-      dealCollection.doc(dealId).delete()
+      dealsCollection.doc(dealId).delete()
+    )
+    .pipe(
+      map(() => dealId)
     );
   }
 }
+

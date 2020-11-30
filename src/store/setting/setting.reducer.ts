@@ -1,12 +1,33 @@
-import { SettingActions } from "./setting.actions";
+import { createReducer, on} from "@ngrx/store";
+import { EntityState, EntityAdapter, createEntityAdapter, Update } from "@ngrx/entity";
 
-export interface State {}
+import { settingActionTypes } from "./setting.actions";
 
-export const initialState: State = {};
+export interface SettingState extends EntityState<ECS.Setting> {}
+export const adapter: EntityAdapter<ECS.Setting> = createEntityAdapter<ECS.Setting>();
+export const initialState = adapter.getInitialState();
 
-export function reducer(state = initialState, action: any) {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
+export const settingReducer = createReducer(
+  initialState,
+  // CRUD ACTIONS
+  on(settingActionTypes.createdSetting, (state, action) => {
+    return adapter.addOne(action.setting, state);
+  }),
+
+  on(settingActionTypes.receivedSettings, (state, action) => {
+    return adapter.addMany(action.settings, state);
+  }),
+
+  on(settingActionTypes.updatedSetting, (state, action) => {
+    const update: Update<ECS.Setting> = {
+      id: action.setting.id,
+      changes: action.setting
+    };
+
+    return adapter.updateOne(update, state);
+  }),
+
+  on(settingActionTypes.deletedSetting, (state, action) => {
+    return adapter.removeOne(action.settingId, state);
+  })
+);

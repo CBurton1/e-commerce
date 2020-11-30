@@ -1,4 +1,8 @@
 import { Component } from "@angular/core";
+import { Store } from "@ngrx/store";
+
+import { State } from "../store";
+import { readCategories } from 'src/store/category/category.actions';
 
 @Component({
   selector: "ecs-root",
@@ -6,5 +10,9 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private store: Store<State>) {}
+
+  public ngOnInit() {
+    this.store.dispatch(readCategories({}));
+  }
 }

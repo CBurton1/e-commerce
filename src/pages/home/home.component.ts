@@ -20,9 +20,10 @@ export class HomeComponent implements OnInit {
   ) {
     this.state = this.store.select(homeState)
       .pipe(
-        // @ts-ignore
         filter((state: HomeState) => !!state),
-        tap((state: HomeState) => {})
+        tap((state: HomeState) => {
+          console.log(state);
+        })
       );
   }
 

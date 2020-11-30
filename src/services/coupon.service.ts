@@ -11,11 +11,11 @@ export class CouponService {
   constructor(private afs: AngularFirestore) {}
 
   public createCoupon(coupon: ECS.Coupon): Observable<ECS.Coupon> {
-    let couponCollection: AngularFirestoreCollection<ECS.Coupon>;
-    couponCollection = this.afs.collection<ECS.Coupon>("coupons");
+    let couponsCollection: AngularFirestoreCollection<ECS.Coupon>;
+    couponsCollection = this.afs.collection<ECS.Coupon>("coupons");
 
     return from(
-      couponCollection.add(coupon)
+      couponsCollection.add(coupon)
     )
     .pipe(
       switchMap((documentReference) => {
@@ -30,8 +30,8 @@ export class CouponService {
     );
   }
 
-  public readCategories(limit?: number): Observable<ECS.Coupon[]> {
-    const couponCollection: Observable<ECS.Coupon[]> =
+  public readCoupons(limit?: number): Observable<ECS.Coupon[]> {
+    const couponsCollection: Observable<ECS.Coupon[]> =
       from(this.afs.collection<ECS.Coupon>("coupons", (ref) => {
         const query = this.lastVisible ?
           ref.orderBy("id").startAfter(this.lastVisible) :
@@ -58,15 +58,15 @@ export class CouponService {
         })
       );
 
-    return couponCollection;
+    return couponsCollection;
   }
 
   public updateCoupon(coupon: ECS.Coupon): Observable<ECS.Coupon> {
-    let couponCollection: AngularFirestoreCollection<ECS.Coupon>;
-    couponCollection = this.afs.collection<ECS.Coupon>("coupons");
+    let couponsCollection: AngularFirestoreCollection<ECS.Coupon>;
+    couponsCollection = this.afs.collection<ECS.Coupon>("coupons");
 
     return from(
-      couponCollection.doc(coupon.id).update(coupon)
+      couponsCollection.doc(coupon.id).update(coupon)
     )
     .pipe(
       map(() => {
@@ -75,12 +75,16 @@ export class CouponService {
     );
   }
 
-  public deleteCoffeeOrder(couponId: string): Observable<void> {
-    let couponCollection: AngularFirestoreCollection<ECS.Coupon>;
-    couponCollection = this.afs.collection<ECS.Coupon>("coupons");
+  public deleteCoupon(couponId: string): Observable<string> {
+    let couponsCollection: AngularFirestoreCollection<ECS.Coupon>;
+    couponsCollection = this.afs.collection<ECS.Coupon>("coupons");
 
     return from(
-      couponCollection.doc(couponId).delete()
+      couponsCollection.doc(couponId).delete()
+    )
+    .pipe(
+      map(() => couponId)
     );
   }
 }
+

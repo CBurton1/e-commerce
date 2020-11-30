@@ -30,7 +30,7 @@ export class ProductService {
     );
   }
 
-  public readCategories(limit?: number): Observable<ECS.Product[]> {
+  public readProducts(limit?: number): Observable<ECS.Product[]> {
     const productsCollection: Observable<ECS.Product[]> =
       from(this.afs.collection<ECS.Product>("products", (ref) => {
         const query = this.lastVisible ?
@@ -75,12 +75,15 @@ export class ProductService {
     );
   }
 
-  public deleteCoffeeProduct(productId: string): Observable<void> {
+  public deleteProduct(productId: string): Observable<string> {
     let productsCollection: AngularFirestoreCollection<ECS.Product>;
     productsCollection = this.afs.collection<ECS.Product>("products");
 
     return from(
       productsCollection.doc(productId).delete()
+    )
+    .pipe(
+      map(() => productId)
     );
   }
 }
