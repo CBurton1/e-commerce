@@ -10,6 +10,7 @@
         "statements"
       ]
     },
+    "no-shadowed-variable": false,
     "array-type": false,
     "arrow-return-shorthand": true,
     "curly": true,
@@ -66,7 +67,7 @@
     ],
     "quotemark": [
       true,
-      "single"
+      "double"
     ],
     "semicolon": {
       "options": [
@@ -139,13 +140,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "ecs",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "ecs",
       "kebab-case"
     ]
   }

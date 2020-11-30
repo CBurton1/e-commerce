@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "e-commerce-44df6": {
+      "hosting": {
+        "e-commerce": [
+          "e-commerce-44df6"
+        ]
+      }
+    }
+  }
+}

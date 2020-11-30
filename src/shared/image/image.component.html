@@ -1,0 +1,4 @@
+<div class="ecs-image">
+  <img *ngIf="smallSrc" #small class="ecs-image__img -small" [src]="smallSrc" (load)="onSmallLoaded()"/>
+  <img #image class="ecs-image__img" [src]="imageSrc" (load)="onImageLoaded()"/>
+</div>

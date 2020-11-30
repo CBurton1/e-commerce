@@ -1,0 +1,39 @@
+.ecs-image {
+  background-color: #f6f6f6;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  padding-top: 100%;
+
+  // for different ratios
+  // &.intrinsic--square {
+  //   padding-top: 100%;
+  // }
+
+  // &.intrinsic--4x3 {
+  //   padding-top: 75%;
+  // }
+
+  // &.intrinsic--16x9 {
+  //   padding-top: 56.25%;
+  // }
+
+  &__img {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.3s linear;
+
+    &.-small {
+      /* this is needed so Safari keeps sharp edges */
+      transform: scale(1);
+    }
+
+    &.-loaded {
+      opacity: 1;
+    }
+  }
+}
