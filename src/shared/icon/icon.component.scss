@@ -13,6 +13,42 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon__bag:before {
+  content: "\e901";
+}
+
+.icon__search:before {
+  content: "\f002";
+}
+
+.icon__check:before {
+  content: "\f00c";
+}
+
+.icon__close:before {
+  content: "\f00d";
+}
+
+.icon__chevron-left:before {
+  content: "\f053";
+}
+
+.icon__chevron-right:before {
+  content: "\f054";
+}
+
+.icon__chevron-up:before {
+  content: "\f077";
+}
+
+.icon__chevron-down:before {
+  content: "\f078";
+}
+
+.icon__hamburger:before {
+  content: "\f0c9";
+}
+
 .ecs-icon {
   display: inline-block;
   vertical-align: middle;

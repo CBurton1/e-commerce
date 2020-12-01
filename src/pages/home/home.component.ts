@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
           console.log(state);
         })
       );
+
+    // document.documentElement.style.setProperty('--primary-color', primary);
   }
 
   public ngOnInit(): void {

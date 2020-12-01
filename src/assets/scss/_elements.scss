@@ -1,0 +1,32 @@
+@import "_tools.fonts";
+@import "_settings.colors";
+
+html,
+body {
+  min-height: 100%;
+  min-width: 100%;
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  @include font-regular();
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  margin: 0 !important;
+}
+
+a {
+  color: $font;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

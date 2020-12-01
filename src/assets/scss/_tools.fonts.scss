@@ -1,0 +1,88 @@
+@mixin font-regular() {
+  font-family: "OpenSansRegular" !important;
+}
+
+@mixin font-light() {
+  font-family: "OpenSansLight" !important;
+}
+
+@mixin font-light-italic() {
+  font-family: "OpenSansLightItalic" !important;
+}
+
+@mixin font-italic() {
+  font-family: "OpenSansItalic" !important;
+}
+
+@mixin font-bold() {
+  font-family: "OpenSansBold" !important;
+}
+
+@mixin font-semi-bold() {
+  font-family: "OpenSansBold" !important;
+}
+
+@mixin font-10() {
+  font-size: 1rem;
+  line-height: 1.5em;
+}
+
+@mixin font-12() {
+  font-size: 1.2rem;
+  line-height: 1.5em;
+}
+
+@mixin font-14() {
+  font-size: 1.4rem;
+  line-height: 1.5em;
+}
+
+@mixin font-16() {
+  font-size: 1.6rem;
+  line-height: 1.5em;
+}
+
+@mixin font-18() {
+  font-size: 1.8rem;
+  line-height: 1.5em;
+}
+
+@mixin font-21() {
+  font-size: 2.1rem;
+  line-height: 1.5em;
+}
+
+@mixin font-25() {
+  font-size: 2.5rem;
+  line-height: 1.5em;
+}
+
+@mixin font-28() {
+  font-size: 2.8rem;
+  line-height: 1.5em;
+}
+
+@mixin font-38() {
+  font-size: 3.8rem;
+  line-height: 1.5em;
+}
+
+@mixin font-50() {
+  font-size: 5rem;
+  line-height: 1.2em;
+}
+
+@mixin font-60() {
+  font-size: 6rem;
+  line-height: 6rem;
+}
+
+@mixin font-67() {
+  font-size: 6.7rem;
+  line-height: 0.85em;
+}
+
+@mixin font-70() {
+  font-size: 7rem;
+  line-height: 8rem;
+}

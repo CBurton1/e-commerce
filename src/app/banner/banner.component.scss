@@ -1,0 +1,12 @@
+.ecs-banner {
+  align-items: center;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  width: 100%;
+
+  &__message {
+    text-transform: uppercase;
+  }
+}

@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 // ngrx
 import { StoreModule } from "@ngrx/store";
@@ -22,8 +23,10 @@ import {
 // app
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { FooterComponent } from "./footer/footer.component";
+import { BannerComponent } from "./banner/banner.component";
 import { HeaderComponent } from "./header/header.component";
+import { FooterComponent } from "./footer/footer.component";
+import { SharedModule } from "../shared/shared.module";
 import { environment } from "../environments/environment";
 
 // page modules
@@ -40,6 +43,7 @@ import { ShopModule } from "../pages/shop/shop.module";
 @NgModule({
   declarations: [
     AppComponent,
+    BannerComponent,
     HeaderComponent,
     FooterComponent
   ],
@@ -58,6 +62,8 @@ import { ShopModule } from "../pages/shop/shop.module";
     ProductModule,
     ShopModule,
 
+    SharedModule,
+
     // ngrx
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot({
@@ -69,7 +75,8 @@ import { ShopModule } from "../pages/shop/shop.module";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireAnalyticsModule
+    AngularFireAnalyticsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

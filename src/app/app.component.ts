@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
 
 import { State } from "../store";
-import { readCategories } from 'src/store/category/category.actions';
 
 @Component({
   selector: "ecs-root",
@@ -10,9 +9,8 @@ import { readCategories } from 'src/store/category/category.actions';
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  constructor(private store: Store<State>) {}
+  public message = "This is the banner message";
+  public siteName = "E-commerce Site";
 
-  public ngOnInit() {
-    this.store.dispatch(readCategories({}));
-  }
+  constructor(private store: Store<State>) {}
 }
