@@ -9,7 +9,7 @@ export const categoryState = (state: any): CategoryState => {
 export const categories = createSelector(
   categoryState,
   (state): ECS.Category[] | undefined => {
-    if (!state.entities) {
+    if (Object.keys(state.entities).length === 0 && state.entities.constructor === Object) {
       return;
     }
 

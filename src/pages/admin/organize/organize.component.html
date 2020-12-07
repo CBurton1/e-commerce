@@ -1,0 +1,26 @@
+<div class="ecs-organize">
+  <p class="ecs-organize__instructions">
+    Drag to reorganize your shop. All Products will be moved along with the category.
+  </p>
+
+  <div class="ecs-organize__shop-map">
+    <h2 class="ecs-organize__shop-map-title">Shop Map</h2>
+    <ecs-org-chart
+      [categories]="categories"
+      (categoriesChanged)="onCategoriesChanged($event)"
+      (categoryClicked)="onCategoryClicked($event)"
+    >
+    </ecs-org-chart>
+  </div>
+
+  <ecs-new-category-form
+    *ngIf="selectedCategory"
+    [category]="selectedCategory"
+    [categories]="categories"
+    class="ecs-organize__selected-category"
+    (formClosed)="selectedCategory = undefined"
+  >
+  </ecs-new-category-form>
+
+  <button (click)="saveCategories()" type="button" class="ecs-organize__save">Save</button>
+</div>

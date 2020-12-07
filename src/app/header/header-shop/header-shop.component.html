@@ -1,0 +1,23 @@
+<div class="ecs-header-shop">
+  <ng-template #categoryTemplateRef let-category="category">
+    <div class="ecs-header-shop__category">
+
+      <a [routerLink]="category.route" class="ecs-header-shop__category-label">
+        {{ category.label }}
+      </a>
+
+      <div *ngIf="category?.children?.length" class="ecs-header-shop__category-children">
+        <ng-template ngFor let-child [ngForOf]="category.children">
+          <ng-template [ngTemplateOutlet]="categoryTemplateRef" [ngTemplateOutletContext]="{ category: child }">
+          </ng-template>
+        </ng-template>
+      </div>
+
+    </div>
+  </ng-template>
+
+  <ng-container *ngFor="let category of organizedCategories">
+    <ng-template [ngTemplateOutlet]="categoryTemplateRef" [ngTemplateOutletContext]="{ category: category }">
+    </ng-template>
+  </ng-container>
+</div>

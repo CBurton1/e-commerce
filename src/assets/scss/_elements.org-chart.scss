@@ -1,0 +1,27 @@
+@import "_tools.fonts";
+
+// org-chart-node google-visualization-orgchart-node-large google-visualization-orgchart-nodesel
+
+.org-chart-node {
+  background-color: #009ACD;
+
+  &.google-visualization-orgchart-nodesel {
+    border: none !important;
+    background-color: #B2DFEE;
+    background: #B2DFEE;
+  }
+
+  h6 {
+    @include font-16;
+    color: white;
+  }
+
+  h7 {
+    @include font-12;
+    color: white;
+  }
+}
+
+.do-drop {
+  background-color: #607B8B;
+}

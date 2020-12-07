@@ -1,3 +1,32 @@
 <div *ngIf="state | async; let state" class="ecs-admin">
 
+  <ul class="ecs-admin__sidebar">
+    <li class="ecs-admin__sidebar-item" (click)="selectedOption = 'organize shop'" [ngClass]="{'-selected': selectedOption === 'organize shop'}">
+      <ecs-icon type="list" class="ecs-admin__sidebar-item-icon"></ecs-icon>
+      <p class="ecs-admin__sidebar-item-text">Organize Shop</p>
+    </li>
+    <li class="ecs-admin__sidebar-item" (click)="selectedOption = 'products'" [ngClass]="{'-selected': selectedOption === 'products'}">
+      <ecs-icon type="list" class="ecs-admin__sidebar-item-icon"></ecs-icon>
+      <p class="ecs-admin__sidebar-item-text">Products</p>
+    </li>
+    <li class="ecs-admin__sidebar-item" (click)="selectedOption = 'orders'" [ngClass]="{'-selected': selectedOption === 'orders'}">
+      <ecs-icon type="receipt" class="ecs-admin__sidebar-item-icon"></ecs-icon>
+      <p class="ecs-admin__sidebar-item-text">Orders</p>
+    </li>
+    <li class="ecs-admin__sidebar-item" (click)="selectedOption = 'users'" [ngClass]="{'-selected': selectedOption === 'users'}">
+      <ecs-icon type="user" class="ecs-admin__sidebar-item-icon"></ecs-icon>
+      <p class="ecs-admin__sidebar-item-text">Users</p>
+    </li>
+  </ul>
+
+  <div class="ecs-admin__data">
+    <h1 class="ecs-admin__data-title">{{ selectedOption }}</h1>
+
+    <ng-container [ngSwitch]="selectedOption">
+      <ecs-products *ngSwitchCase="'products'"></ecs-products>
+      <ecs-orders *ngSwitchCase="'orders'"></ecs-orders>
+      <ecs-organize *ngSwitchCase="'organize shop'" [categories]="state.categories || []"></ecs-organize>
+      <ecs-users *ngSwitchCase="'users'"></ecs-users>
+    </ng-container>
+  </div>
 </div>

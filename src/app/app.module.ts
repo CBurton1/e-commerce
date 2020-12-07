@@ -24,7 +24,9 @@ import {
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BannerComponent } from "./banner/banner.component";
+import { BagComponent } from "./bag/bag.component";
 import { HeaderComponent } from "./header/header.component";
+import { HeaderShopComponent } from "./header/header-shop/header-shop.component";
 import { FooterComponent } from "./footer/footer.component";
 import { SharedModule } from "../shared/shared.module";
 import { environment } from "../environments/environment";
@@ -45,7 +47,9 @@ import { ShopModule } from "../pages/shop/shop.module";
     AppComponent,
     BannerComponent,
     HeaderComponent,
-    FooterComponent
+    HeaderShopComponent,
+    FooterComponent,
+    BagComponent
   ],
   imports: [
     BrowserModule,

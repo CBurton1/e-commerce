@@ -4,6 +4,6 @@ import { Actions } from "@ngrx/effects";
 @Injectable({
   providedIn: "root"
 })
-export class CartEffectsService {
+export class BagEffectsService {
   constructor(private actions: Actions) {}
 }

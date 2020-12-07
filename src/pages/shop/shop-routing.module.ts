@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: "",
     component: ShopComponent
+  },
+  {
+    path: ":id",
+    loadChildren: () => import("./shop.module").then(m => m.ShopModule)
   }
 ];
 

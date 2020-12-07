@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon__help:before {
+  content: "\e900";
+}
+
 .icon__bag:before {
   content: "\e901";
 }
@@ -21,12 +25,24 @@
   content: "\f002";
 }
 
+.icon__list:before {
+  content: "\e903";
+}
+
+.icon__receipt:before {
+  content: "\e904";
+}
+
+.icon__user:before {
+  content: "\f2c0";
+}
+
 .icon__check:before {
   content: "\f00c";
 }
 
 .icon__close:before {
-  content: "\f00d";
+  content: "\e902";
 }
 
 .icon__chevron-left:before {

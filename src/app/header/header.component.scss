@@ -3,14 +3,19 @@
 @import "_tools.fonts";
 
 .ecs-header {
-  background-color: green;
-  display: flex;
-  height: 7rem;
-  justify-content: space-between;
-  padding: 2rem 3rem 0 3rem;
-  position: sticky;
-  top: 0;
-  width: 100%;
+  position: relative;
+  z-index: 1;
+
+  &__menu {
+    background-color: green;
+    display: flex;
+    height: 7rem;
+    justify-content: space-between;
+    padding: 2rem 3rem 0 3rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 
   &__left {
     display: flex;
@@ -55,5 +60,20 @@
     transform: translate(-50%, -50%);
     text-transform: uppercase;
     padding-bottom: 1rem;
+  }
+
+  &__shop {
+    cursor: initial;
+    transition: top 0.1s ease-in-out;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -5rem;
+    background-color: yellow;
+    z-index: -1;
+
+    &.-open {
+      top: 11rem;
+    }
   }
 }

@@ -1,19 +1,31 @@
 <div class="ecs-header">
+  <ecs-banner *ngIf="message" [message]="message" (mouseover)="showShop = false"></ecs-banner>
+  <div class="ecs-header__menu">
+    <ul class="ecs-header__left">
+      <li class="ecs-header__item -menu"><ecs-icon type="hamburger"></ecs-icon></li>
+      <li class="ecs-header__item" (mouseover)="showShop = true">
+        <a routerLink="shop">Shop</a>
+      </li>
+      <li class="ecs-header__item" (mouseover)="showShop = false"><a routerLink="collections">Collections</a></li>
+      <li class="ecs-header__item"><a routerLink="about">About</a></li>
+      <li class="ecs-header__item"><a routerLink="contact">Contact</a></li>
+    </ul>
 
-  <ul class="ecs-header__left">
-    <li class="ecs-header__item -menu"><ecs-icon type="hamburger"></ecs-icon></li>
-    <li class="ecs-header__item"><a routerLink="shop">Shop</a></li>
-    <li class="ecs-header__item"><a routerLink="collections">Collections</a></li>
-    <li class="ecs-header__item"><a routerLink="about">About</a></li>
-    <li class="ecs-header__item"><a routerLink="contact">Contact</a></li>
-  </ul>
+    <a routerLink=""><p class="ecs-header__name">{{ siteName }}</p></a>
 
-  <a routerLink=""><p class="ecs-header__name">{{ siteName }}</p></a>
+    <ul class="ecs-header__right">
+      <li class="ecs-header__item"><a routerLink="search">Search</a></li>
+      <li class="ecs-header__item"><a routerLink="account">Account</a></li>
+      <li (click)="toggleBag()" class="ecs-header__item -bag"><ecs-icon type="bag"></ecs-icon></li>
+    </ul>
+  </div>
 
-  <ul class="ecs-header__right">
-    <li class="ecs-header__item"><a routerLink="search">Search</a></li>
-    <li class="ecs-header__item"><a routerLink="account">Account</a></li>
-    <li class="ecs-header__item -bag"><ecs-icon type="bag"></ecs-icon></li>
-  </ul>
+  <ecs-header-shop
+    class="ecs-header__shop"
+    [categories]="categories"
+    [ngClass]="{ '-open': showShop }"
+    (mouseleave)="showShop = false"
+  >
+  </ecs-header-shop>
 
 </div>

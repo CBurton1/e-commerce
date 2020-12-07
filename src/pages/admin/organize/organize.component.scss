@@ -1,0 +1,30 @@
+@import "_tools.fonts";
+@import "_tools.breakpoints";
+
+.ecs-organize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__instructions {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  &__shop-map {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      @include font-18;
+    }
+  }
+
+  &__selected-category {
+    width: 100%;
+
+    @media screen and (min-width: $lg) {
+      width: 50rem;
+    }
+  }
+}

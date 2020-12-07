@@ -13,6 +13,7 @@ import { AdminState, adminState } from "./admin.selectors";
 })
 export class AdminComponent implements OnInit {
   public loading = false;
+  public selectedOption: "products" | "users" | "orders" | "organize shop" = "organize shop";
   public state: Observable<AdminState>;
 
   constructor(
@@ -23,7 +24,7 @@ export class AdminComponent implements OnInit {
         // @ts-ignore
         filter((state: AdminState) => !!state),
         tap((state: AdminState) => {
-          console.log(state);
+          // console.log(state);
         })
       );
   }

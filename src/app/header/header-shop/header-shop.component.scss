@@ -1,0 +1,53 @@
+@import "_tools.fonts";
+
+.ecs-header-shop {
+  display: flex;
+  padding: 2rem 5rem;
+
+  &__category {
+    margin: 1rem;
+
+    &-label {
+      @include font-bold;
+      display: block;
+      margin-bottom: 1rem;
+      color: red;
+      cursor: pointer;
+    }
+
+    &-children {
+      & .ecs-header-shop__category {
+        margin: 0;
+      }
+
+      & .ecs-header-shop__category-label {
+        @include font-regular;
+      }
+    }
+  }
+}
+
+.node {
+	&__label {
+    @include font-bold;
+		color: red ;
+		cursor: pointer ;
+		text-decoration: underline ;
+	}
+
+	&__children {
+		border-left: 3px solid #CCCCCC ;
+		margin: 5px 0px 5px 30px ;
+		padding-left: 10px ;
+	}
+
+	// &--selected {
+	// 	> .node {
+	// 		&__label {
+	// 			background-color: red ;
+	// 			color: white ;
+	// 			font-weight: bold ;
+	// 		}
+	// 	}
+	// }
+}

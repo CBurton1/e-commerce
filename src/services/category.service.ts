@@ -2,6 +2,7 @@ import { Observable, from } from "rxjs";
 import { Injectable } from "@angular/core";
 import { AngularFirestore, AngularFirestoreCollection, QueryDocumentSnapshot, } from "@angular/fire/firestore";
 import { switchMap, map } from "rxjs/operators";
+import { update } from 'lodash';
 
 @Injectable({
   providedIn: "root"
@@ -26,6 +27,9 @@ export class CategoryService {
           id: documentSnapshot.id,
           ...documentSnapshot.data()
         } as ECS.Category;
+      }),
+      switchMap((category: ECS.Category) => {
+        return this.updateCategory(category);
       })
     );
   }

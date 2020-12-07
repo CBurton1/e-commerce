@@ -62,6 +62,11 @@
   line-height: 1.5em;
 }
 
+@mixin font-35() {
+  font-size: 3.5rem;
+  line-height: 1.5em;
+}
+
 @mixin font-38() {
   font-size: 3.8rem;
   line-height: 1.5em;

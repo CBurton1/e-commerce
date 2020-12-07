@@ -1,3 +1,44 @@
-.ecs-admin {
+@import "_tools.fonts";
 
+.ecs-admin {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+
+  &__sidebar {
+    height: 100%;
+    width: 35rem;
+    background-color: red;
+
+    &-item {
+      align-items: center;
+      display: flex;
+      cursor: pointer;
+      padding: 5rem;
+
+      &:hover, &.-selected {
+        background-color: green;
+      }
+
+      &-icon {
+        font-size: 2.5rem;
+      }
+
+      &-text {
+        @include font-16;
+        margin-left: 1rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__data {
+    padding: 2rem;
+    width: 100%;
+
+    &-title {
+      @include font-21;
+      text-transform: uppercase;
+    }
+  }
 }

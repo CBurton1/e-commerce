@@ -1,4 +1,13 @@
-<ecs-banner *ngIf="message" [message]="message"></ecs-banner>
-<ecs-header [siteName]="siteName"></ecs-header>
-<router-outlet></router-outlet>
-<ecs-footer></ecs-footer>
+<div *ngIf="state | async; let state" class="ecs-app">
+
+  <div class="ecs-app__container" [ngClass]="{'-bag-open': state.bagOpen}">
+    <ecs-header [siteName]="siteName" [categories]="state.categories" [message]="message"></ecs-header>
+    <div class="ecs-app__container-route">
+      <router-outlet></router-outlet>
+    </div>
+    <ecs-footer></ecs-footer>
+  </div>
+
+  <ecs-bag class="ecs-app__bag"></ecs-bag>
+
+</div>

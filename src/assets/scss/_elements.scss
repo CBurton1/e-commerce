@@ -18,13 +18,18 @@ body {
   width: 100%;
 }
 
-p {
-  margin: 0 !important;
-}
-
 a {
   color: $font;
   text-decoration: none;
+}
+
+// override angular material margin
+.mat-body p, .mat-body-1 p, .mat-typography p {
+  margin: 0;
+}
+
+.mat-form-field-wrapper {
+  width: 100%;
 }
 
 * {
