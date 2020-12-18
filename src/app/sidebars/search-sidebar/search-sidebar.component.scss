@@ -1,10 +1,10 @@
-.ecs-bag {
+.ecs-search-sidebar {
   position: fixed;
   top: 0;
   z-index: 100;
   width: 50rem;
   height: 100%;
-  background-color: #fbf5f0;
+  background-color: purple;
   transform: translate3d(100%, 0, 0);
   transition: transform 0.4s ease;
   cursor: auto;

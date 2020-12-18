@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { filter, tap } from "rxjs/operators";
+import { filter, tap, delay } from "rxjs/operators";
 
 import { State } from "../../store/";
 import { HomeState, homeState } from "./home.selectors";
@@ -12,7 +12,7 @@ import { HomeState, homeState } from "./home.selectors";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  public loading = false;
+  public loading = true;
   public state: Observable<HomeState>;
 
   constructor(
@@ -22,11 +22,9 @@ export class HomeComponent implements OnInit {
       .pipe(
         filter((state: HomeState) => !!state),
         tap((state: HomeState) => {
-          console.log(state);
+          this.loading = false;
         })
       );
-
-    // document.documentElement.style.setProperty('--primary-color', primary);
   }
 
   public ngOnInit(): void {

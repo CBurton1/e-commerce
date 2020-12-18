@@ -1,0 +1,9 @@
+<div *ngIf="state | async; let state" class="ecs-account-sidebar" [ngClass]="{'-open': state.accountOpen }">
+  <ecs-icon class="ecs-account-sidebar__close" (click)="closeAccountSidebar()" type="close"></ecs-icon>
+
+  <ecs-login-form *ngIf="!state.user && showLogin" (toggleForm)="toggleForm($event)"></ecs-login-form>
+  <ecs-signup-form *ngIf="!state.user && showSignup" (toggleForm)="toggleForm($event)"></ecs-signup-form>
+  <ecs-forgot-password-form *ngIf="!state.user && showForgotPassword" (toggleForm)="toggleForm($event)"></ecs-forgot-password-form>
+
+  <ecs-user *ngIf="state.user" [user]="state.user"></ecs-user>
+</div>

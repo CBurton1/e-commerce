@@ -14,9 +14,9 @@
     <a routerLink=""><p class="ecs-header__name">{{ siteName }}</p></a>
 
     <ul class="ecs-header__right">
-      <li class="ecs-header__item"><a routerLink="search">Search</a></li>
-      <li class="ecs-header__item"><a routerLink="account">Account</a></li>
-      <li (click)="toggleBag()" class="ecs-header__item -bag"><ecs-icon type="bag"></ecs-icon></li>
+      <li (click)="toggleSearchSidebar()" class="ecs-header__item -search"><ecs-icon type="search"></ecs-icon></li>
+      <li (click)="toggleAccountSidebar()" class="ecs-header__item -user"><ecs-icon type="user"></ecs-icon></li>
+      <li (click)="toggleBagSidebar()" class="ecs-header__item -bag"><ecs-icon type="bag"></ecs-icon></li>
     </ul>
   </div>
 

@@ -1,0 +1,39 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <h1 class="ecs-login-form__title">Customer Login</h1>
+
+  <div class="ecs-login-form">
+
+    <mat-form-field class="ecs-login-form__field" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher" placeholder="Email">
+      <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+        Email is <strong>invalid</strong>
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls['email'].hasError('loginError')">
+        {{ loginForm.controls['email'].errors?.loginError }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="ecs-login-form__field" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" [errorStateMatcher]="matcher" placeholder="Password">
+      <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls['password'].hasError('loginError')">
+        {{ loginForm.controls['password'].errors?.loginError }}
+      </mat-error>
+    </mat-form-field>
+
+    <button class="ecs-login-form__submit" mat-raised-button [class.spinner]="loading" [disabled]="loading">
+      Login
+    </button>
+
+    <p (click)="onClickSignup()" class="ecs-login-form__signup">Don't have an account? Sign up</p>
+
+    <p (click)="onForgotPassword()" class="ecs-login-form__signup">Forgot your password?</p>
+  </div>
+</form>

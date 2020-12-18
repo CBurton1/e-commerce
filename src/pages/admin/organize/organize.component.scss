@@ -14,9 +14,27 @@
   &__shop-map {
     display: flex;
     flex-direction: column;
+    border: 2px solid black;
+    border-radius: 5px;
 
-    &__title {
+    &-title {
       @include font-18;
+    }
+
+    &-header {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem;
+      background-color: green;
+    }
+
+    &-add {
+      cursor: pointer;
+    }
+
+    &-chart {
+      padding: 2rem;
     }
   }
 
@@ -26,5 +44,16 @@
     @media screen and (min-width: $lg) {
       width: 50rem;
     }
+  }
+
+  &__submit {
+    align-self: flex-end;
+    padding: 1rem;
+    cursor: pointer;
+    width: 10rem;
+    border: none;
+    background-color: cadetblue;
+    border-radius: 5px;
+    margin: 2rem;
   }
 }

@@ -1,0 +1,3 @@
+@mixin page-height {
+  min-height: calc(100vh - var(--banner-height) - var(--header-height));
+}

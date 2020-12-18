@@ -21,8 +21,12 @@
   content: "\e901";
 }
 
+.icon__plus:before {
+  content: "\f067";
+}
+
 .icon__search:before {
-  content: "\f002";
+  content: "\e906";
 }
 
 .icon__list:before {
@@ -34,7 +38,7 @@
 }
 
 .icon__user:before {
-  content: "\f2c0";
+  content: "\e905";
 }
 
 .icon__check:before {

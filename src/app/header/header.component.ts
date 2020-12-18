@@ -2,7 +2,7 @@ import { Component, Input } from "@angular/core";
 import { Store } from "@ngrx/store";
 
 import { State } from "src/store";
-import { toggleBag } from "../../store/bag/bag.actions";
+import { ToggleAccount, ToggleBag, ToggleSearch } from "../../store/sidebar/sidebar.actions";
 
 @Component({
   selector: "ecs-header",
@@ -17,7 +17,15 @@ export class HeaderComponent {
 
   public constructor(private store: Store<State>) {}
 
-  public toggleBag(): void {
-    this.store.dispatch(toggleBag());
+  public toggleAccountSidebar(): void {
+    this.store.dispatch(new ToggleAccount());
+  }
+
+  public toggleBagSidebar(): void {
+    this.store.dispatch(new ToggleBag());
+  }
+
+  public toggleSearchSidebar(): void {
+    this.store.dispatch(new ToggleSearch());
   }
 }

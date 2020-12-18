@@ -50,6 +50,20 @@
       position: relative;
       margin-right: 0;
     }
+
+    &.-user {
+      position: relative;
+      top: 0.1rem;
+      font-size: 2.5rem;
+      color: black;
+    }
+
+    &.-search {
+      color: black;
+      font-size: 2.25rem;
+      position: relative;
+      top: 0.1rem;
+    }
   }
 
   &__name {

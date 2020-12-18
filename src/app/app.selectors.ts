@@ -1,24 +1,28 @@
 import { createSelector } from "@ngrx/store";
 
-import { bagOpen } from "../store/bag/bag.selectors";
+import { sidebarOpen } from "../store/sidebar/sidebar.selectors";
 import { categories } from "../store/category/category.selectors";
+import { user } from "../store/user/user.selectors";
 
 export interface AppState {
-  bagOpen: boolean | undefined;
+  sidebarOpen: boolean | undefined;
   categories: ECS.Category[];
+  user: ECS.User | undefined;
 }
 
 export const appState = createSelector(
-  bagOpen,
+  sidebarOpen,
   categories,
-  (bagOpen, categories): AppState | undefined => {
+  user,
+  (sidebarOpen, categories, user): AppState | undefined => {
     if (!categories) {
       return;
     }
 
     return {
-      bagOpen,
-      categories
+      sidebarOpen,
+      categories,
+      user
     };
   }
 );

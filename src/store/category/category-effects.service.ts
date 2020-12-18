@@ -1,8 +1,8 @@
-import { categoryActionTypes } from "./category.actions";
 import { createEffect, Actions, ofType } from "@ngrx/effects";
 import { concatMap, map } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 
+import { categoryActionTypes } from "./category.actions";
 import { CategoryService } from "../../services/category.service";
 
 @Injectable()

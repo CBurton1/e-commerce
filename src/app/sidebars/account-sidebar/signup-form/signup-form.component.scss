@@ -1,0 +1,33 @@
+@import "_tools.fonts";
+
+.ecs-signup-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+
+  &__title {
+    padding: 5rem 1rem 1rem 2rem;
+    background-color: black;
+    color: white;
+  }
+
+  &__field {
+    @include font-14;
+    margin-bottom: 1rem;
+  }
+
+  &__submit {
+    margin-top: 2rem;
+  }
+
+  &__signup {
+    align-self: flex-end;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+
+  &__resend {
+    margin-top: 2rem;
+    align-self: flex-end;
+  }
+}

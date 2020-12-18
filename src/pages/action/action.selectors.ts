@@ -1,16 +1,18 @@
 import { createSelector } from "@ngrx/store";
 
-import { user } from "../../store/user/user.selectors";
+import { queryParams } from "../../store/router/router.selectors";
 
 export interface ActionState {
-  user: ECS.User | undefined;
+  code: string;
+  mode: string;
 }
 
 export const actionState = createSelector(
-  user,
-  (user): ActionState | undefined => {
+  queryParams,
+  (queryParams): ActionState => {
     return {
-      user
+      code: queryParams.oobCode,
+      mode: queryParams.mode
     };
   }
 );

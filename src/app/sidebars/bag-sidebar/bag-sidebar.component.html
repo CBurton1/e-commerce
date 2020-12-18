@@ -1,0 +1,3 @@
+<div *ngIf="state | async; let state" class="ecs-bag-sidebar" [ngClass]="{'-open': state.bagOpen }">
+  <ecs-icon class="ecs-bag-sidebar__close" (click)="closeBagSidebar()" type="close"></ecs-icon>
+</div>

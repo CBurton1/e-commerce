@@ -10,6 +10,7 @@ import * as fromOrder from "./order/order.reducer";
 import * as fromProductStructure from "./product-structure/product-structure.reducer";
 import * as fromBag from "./bag/bag.reducer";
 import * as fromSetting from "./setting/setting.reducer";
+import * as fromSidebar from "./sidebar/sidebar.reducer";
 
 import { BagEffectsService } from "./bag/bag-effects.service";
 import { CategoryEffectsService } from "./category/category-effects.service";
@@ -32,6 +33,7 @@ export interface State {
   order: any;
   bag: any;
   setting: any;
+  sidebar: any;
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -42,6 +44,7 @@ export const reducers: ActionReducerMap<State> = {
   router: fromRouter.reducer,
   order: fromOrder.orderReducer,
   productStructure: fromProductStructure.productStructureReducer,
+  sidebar: fromSidebar.reducer,
   setting: fromSetting.settingReducer,
   bag: fromBag.bagReducer,
   user: fromUser.reducer

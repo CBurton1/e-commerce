@@ -5,6 +5,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { FroalaEditorModule, FroalaViewModule } from "angular-froala-wysiwyg";
 
 import { DragDropModule } from "@angular/cdk/drag-drop";
 
@@ -28,7 +29,9 @@ import { SharedModule } from "../../shared/shared.module";
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   declarations: [
     AdminComponent,

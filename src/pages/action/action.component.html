@@ -1,3 +1,45 @@
 <div *ngIf="state | async; let state" class="ecs-action">
 
+  <div *ngIf="verifyEmail" class="ecs-action__type">
+    <h1 class="ecs-action__type-header">Verify Account</h1>
+    <div class="ecs-action__type-form">
+      <p *ngIf="verificationSuccess && !verificationError">Your account has been verified.</p>
+      <p *ngIf="verificationError">{{ verificationError }}</p>
+    </div>
+  </div>
+
+  <form *ngIf="resetPassword" class="ecs-action__type" [formGroup]="resetPasswordForm" (ngSubmit)="onResetPassword(state.code)">
+    <h1 class="ecs-action__type-header">Reset Password</h1>
+
+    <div *ngIf="!success" class="ecs-action__type-form">
+      <mat-form-field class="ecs-action__reset-password-field" appearance="outline">
+        <mat-label>New Password</mat-label>
+        <input type="password" matInput formControlName="newPassword" [errorStateMatcher]="matcher" placeholder="New Password">
+        <mat-error *ngIf="resetPasswordForm.controls['newPassword'].hasError('required')">
+          New Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="resetPasswordForm.controls['newPassword'].hasError('minLength')">
+          New Password must be more than <strong>8</strong> characters
+        </mat-error>
+        <mat-error *ngIf="resetPasswordForm.controls['newPassword'].hasError('maxLength')">
+          New Password cannot be more than <strong>60</strong> characters
+        </mat-error>
+        <mat-error *ngIf="resetPasswordForm.controls['newPassword'].hasError('pattern')">
+          New Password must include at least one uppercase, one lowercase and one number
+        </mat-error>
+        <mat-error *ngIf="resetPasswordForm.controls['newPassword'].hasError('resetError')">
+          {{ resetPasswordForm.controls['newPassword'].errors?.resetError }}
+        </mat-error>
+      </mat-form-field>
+
+      <button class="ecs-action__reset-password-submit" mat-raised-button [class.spinner]="loading" [disabled]="loading">
+        Reset Password
+      </button>
+    </div>
+
+    <div *ngIf="success">
+      <p>Your password has been reset.</p>
+    </div>
+  </form>
+
 </div>

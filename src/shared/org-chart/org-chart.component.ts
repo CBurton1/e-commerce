@@ -57,11 +57,11 @@ export class OrgChartComponent implements OnInit {
               node.addEventListener("dragenter", (event: any) => this.dragEnter(event));
               node.addEventListener("dragexit", () => (this.draggedNode = null));
               node.addEventListener("dragleave", (event: any) => this.dragLeave(event));
+              node.addEventListener("click", () => this.categoryClicked.emit(node.title));
             }
 
             node.addEventListener("dragover", (event: any) => this.dragEnter(event));
             node.addEventListener("drop", (event: any) => this.drop(event));
-            node.addEventListener("click", () => this.categoryClicked.emit(node.title));
           });
         },
       );

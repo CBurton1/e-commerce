@@ -1,0 +1,10 @@
+@import "_tools.sidebar";
+@import "_tools.fonts";
+
+.ecs-account-sidebar {
+  @include sidebar(#f5f3ed);
+
+  &__close {
+    color: white;
+  }
+}

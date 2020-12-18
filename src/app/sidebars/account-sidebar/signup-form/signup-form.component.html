@@ -1,0 +1,76 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+  <h1 class="ecs-signup-form__title">Customer Signup</h1>
+
+  <div *ngIf="!success" class="ecs-signup-form">
+
+    <mat-form-field class="ecs-signup-form__field" appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input type="text" matInput formControlName="firstName" [errorStateMatcher]="matcher" placeholder="First Name">
+      <mat-error *ngIf="signupForm.controls['firstName'].hasError('required')">
+        First Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="ecs-signup-form__field" appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input type="text" matInput formControlName="lastName" [errorStateMatcher]="matcher" placeholder="Last Name">
+      <mat-error *ngIf="signupForm.controls['lastName'].hasError('required')">
+        Last Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="ecs-signup-form__field" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher" placeholder="Email">
+      <mat-error *ngIf="signupForm.controls['email'].hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls['email'].hasError('email')">
+        Email is <strong>invalid</strong>
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls['email'].hasError('signupError')">
+        {{ signupForm.controls['email'].errors?.signupError }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="ecs-signup-form__field" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" [errorStateMatcher]="matcher" placeholder="Password">
+      <mat-error *ngIf="signupForm.controls['password'].hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls['password'].hasError('minLength')">
+        Password must be more than <strong>8</strong> characters
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls['password'].hasError('maxLength')">
+        Password cannot be more than <strong>60</strong> characters
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls['password'].hasError('pattern')">
+        Password must include at least one uppercase, one lowercase and one number
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="ecs-signup-form__field" appearance="outline">
+      <mat-label>Confirm Password</mat-label>
+      <input type="password" matInput formControlName="confirmPassword" [errorStateMatcher]="matcher" placeholder="Confirm Password">
+      <mat-error *ngIf="signupForm.controls['confirmPassword'].hasError('required')">
+        Confirm Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="signupForm.controls['confirmPassword'].hasError('mustMatch')">
+        Confirm Password must match <strong>password</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <button class="ecs-signup-form__submit" mat-raised-button [class.spinner]="loading" [disabled]="loading">
+      Signup
+    </button>
+
+    <p (click)="onClickLogin()" class="ecs-signup-form__signup">Already have an account? Login</p>
+  </div>
+
+  <div *ngIf="success" class="ecs-signup-form">
+    <p>A confirmation email has been sent to {{ signupForm.value.email }}.</p>
+
+    <p>Please check your email to confirm your account.</p>
+  </div>
+</form>

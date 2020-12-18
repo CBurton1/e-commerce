@@ -1,3 +1,5 @@
+@import "_tools.page-height";
+
 .ecs-app {
   display: flex;
   max-width: 100vw;
@@ -7,12 +9,12 @@
     transform: translate3d(0, 0, 0);
     transition: transform 0.4s ease;
 
-    &.-bag-open {
+    &.-sidebar-open {
       transform: translate3d(-50rem, 0, 0);
     }
 
     &-route {
-      height: 100vh;
+      @include page-height;
       width: 100vw;
       background-color: var(--primary-color);
     }

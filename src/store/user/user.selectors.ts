@@ -9,10 +9,17 @@ export const userState = (state: any): State => {
 export const user = createSelector(
   userState,
   (state): ECS.User | undefined => {
-    if (state.user) {
+    return state.currentUser;
+  }
+);
+
+export const users = createSelector(
+  userState,
+  (state): ECS.User[] | undefined => {
+    if (!state.users) {
       return;
     }
 
-    return state.user;
+    return state.users;
   }
 );

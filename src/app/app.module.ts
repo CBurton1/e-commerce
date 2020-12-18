@@ -24,12 +24,14 @@ import {
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BannerComponent } from "./banner/banner.component";
-import { BagComponent } from "./bag/bag.component";
 import { HeaderComponent } from "./header/header.component";
 import { HeaderShopComponent } from "./header/header-shop/header-shop.component";
 import { FooterComponent } from "./footer/footer.component";
 import { SharedModule } from "../shared/shared.module";
 import { environment } from "../environments/environment";
+
+// sidebars
+import { SidebarsModule } from "./sidebars/sidebars.module";
 
 // page modules
 import { AboutModule } from "../pages/about/about.module";
@@ -48,12 +50,12 @@ import { ShopModule } from "../pages/shop/shop.module";
     BannerComponent,
     HeaderComponent,
     HeaderShopComponent,
-    FooterComponent,
-    BagComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SidebarsModule,
 
     // pages
     AboutModule,

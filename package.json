@@ -28,6 +28,7 @@
     "@ngrx/store": "^10.0.1",
     "@types/clone-deep": "^4.0.1",
     "@types/lodash": "^4.14.165",
+    "angular-froala-wysiwyg": "^3.2.3",
     "clone-deep": "^4.0.1",
     "firebase": "^7.0.0 || ^8.0.0",
     "rxjs": "~6.6.0",

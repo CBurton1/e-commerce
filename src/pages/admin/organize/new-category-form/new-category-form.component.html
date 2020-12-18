@@ -1,7 +1,7 @@
 <form *ngIf="categoryForm" [formGroup]="categoryForm" (ngSubmit)="onSubmit()" #form="ngForm" class="ecs-new-category-form">
   <div class="ecs-new-category-form__info">
     <h1 class="ecs-new-category-form__info-title">
-      {{ category ? "Edit Category" : "Create Category" }}
+      {{ category.title ? "Edit Category" : "Create Category" }}
     </h1>
 
     <button
@@ -13,80 +13,69 @@
     </button>
   </div>
 
-  <mat-form-field class="ecs-new-category-form__field">
-    <mat-label>Title</mat-label>
-    <input
-      type="text"
-      matInput
-      formControlName="title"
-      [errorStateMatcher]="matcher"
-      placeholder="Code">
-    <mat-error *ngIf="categoryForm.controls['title'].hasError('required')">
-      Title is <strong>required</strong>
-    </mat-error>
-    <ecs-icon
-      type="help"
-      class="ecs-new-category-form__field-help"
-      [matTooltip]="tooltips.title"
-      matTooltipPosition="right"
-    >
-    </ecs-icon>
-  </mat-form-field>
+  <div class="ecs-new-category-form__form">
+    <mat-form-field class="ecs-new-category-form__field">
+      <mat-label>Title</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="title"
+        [errorStateMatcher]="matcher"
+        placeholder="Code">
+      <mat-error *ngIf="categoryForm.controls['title'].hasError('required')">
+        Title is <strong>required</strong>
+      </mat-error>
+      <ecs-icon
+        type="help"
+        class="ecs-new-category-form__field-help"
+        [matTooltip]="tooltips.title"
+        matTooltipPosition="right"
+      >
+      </ecs-icon>
+    </mat-form-field>
 
-  <mat-form-field class="ecs-new-category-form__field">
-    <mat-label>Label</mat-label>
-    <input
-      type="text"
-      matInput
-      formControlName="label"
-      [errorStateMatcher]="matcher"
-      placeholder="Code">
-    <mat-error *ngIf="categoryForm.controls['label'].hasError('required')">
-      Label is <strong>required</strong>
-    </mat-error>
-    <ecs-icon
-      type="help"
-      class="ecs-new-category-form__field-help"
-      [matTooltip]="tooltips.label"
-      matTooltipPosition="right"
-    >
-    </ecs-icon>
-  </mat-form-field>
+    <mat-form-field class="ecs-new-category-form__field">
+      <mat-label>Label</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="label"
+        [errorStateMatcher]="matcher"
+        placeholder="Code">
+      <mat-error *ngIf="categoryForm.controls['label'].hasError('required')">
+        Label is <strong>required</strong>
+      </mat-error>
+      <ecs-icon
+        type="help"
+        class="ecs-new-category-form__field-help"
+        [matTooltip]="tooltips.label"
+        matTooltipPosition="right"
+      >
+      </ecs-icon>
+    </mat-form-field>
 
-  <mat-form-field class="ecs-new-category-form__field">
-    <mat-label>Description</mat-label>
-    <input
-      type="text"
-      matInput
-      formControlName="description"
-      [errorStateMatcher]="matcher"
-      placeholder="Code">
-    <mat-error *ngIf="categoryForm.controls['description'].hasError('required')">
-      Description is <strong>required</strong>
-    </mat-error>
-    <ecs-icon
-      type="help"
-      class="ecs-new-category-form__field-help"
-      [matTooltip]="tooltips.description"
-      matTooltipPosition="right"
-    >
-    </ecs-icon>
-  </mat-form-field>
+    <div class="ecs-new-category-form__field">
+      <textarea
+        class="ecs-new-category-form__field"
+        type="text"
+        [froalaEditor]="{placeholderText: 'Description'}"
+        formControlName="description"
+        placeholder="Description">
+      </textarea>
+      <ecs-icon
+        type="help"
+        class="ecs-new-category-form__field-help"
+        [matTooltip]="tooltips.description"
+        matTooltipPosition="right"
+      >
+      </ecs-icon>
+    </div>
 
-  <mat-form-field class="ecs-new-category-form__field">
-    <mat-label>Belongs to</mat-label>
-    <mat-select matNativeControl formControlName="parentId" name="parent">
-      <mat-option value="" selected></mat-option>
-      <mat-option *ngFor="let category of categories" [value]="category.id">
-        {{ category.title }}
-      </mat-option>
-    </mat-select>
-    <ecs-icon
-      type="help"
-      class="ecs-new-category-form__field-help"
-      [matTooltip]="tooltips.parentId"
-      matTooltipPosition="right"
-    >
-    </ecs-icon>
-  </mat-form-field>
+    <button class="ecs-new-category-form__submit">Save</button>
+  </div>
+
+
+
+
+
 </form>

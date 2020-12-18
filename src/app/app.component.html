@@ -1,6 +1,6 @@
 <div *ngIf="state | async; let state" class="ecs-app">
 
-  <div class="ecs-app__container" [ngClass]="{'-bag-open': state.bagOpen}">
+  <div class="ecs-app__container" [ngClass]="{'-sidebar-open': state.sidebarOpen}">
     <ecs-header [siteName]="siteName" [categories]="state.categories" [message]="message"></ecs-header>
     <div class="ecs-app__container-route">
       <router-outlet></router-outlet>
@@ -8,6 +8,8 @@
     <ecs-footer></ecs-footer>
   </div>
 
-  <ecs-bag class="ecs-app__bag"></ecs-bag>
+  <ecs-bag-sidebar></ecs-bag-sidebar>
+  <ecs-search-sidebar></ecs-search-sidebar>
+  <ecs-account-sidebar></ecs-account-sidebar>
 
 </div>

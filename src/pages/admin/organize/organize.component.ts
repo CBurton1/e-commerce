@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import { Component, Input } from "@angular/core";
 import { forkJoin } from "rxjs";
 import { take } from "rxjs/operators";
 import { Store } from "@ngrx/store";
@@ -18,28 +17,14 @@ google.charts.load("current", {
   templateUrl: "./organize.component.html",
   styleUrls: ["./organize.component.scss"]
 })
-export class OrganizeComponent implements OnInit {
+export class OrganizeComponent {
   @Input() public categories!: ECS.Category[];
-  public categoryForm!: FormGroup;
-  public selectedCategory: ECS.Category | undefined = undefined;
+  public selectedCategory: ECS.Category | undefined | {} = undefined;
 
   constructor(
     private categoryService: CategoryService,
     private store: Store<State>
   ) {}
-
-  public ngOnInit(): void {
-    // this.createCategoryForm();
-  }
-
-  public createCategoryForm(): void {
-    this.categoryForm = new FormGroup({
-      productStructureId: new FormControl(this.selectedCategory?.productStructureId || "", []),
-      description: new FormControl(this.selectedCategory?.description || "", []),
-      title: new FormControl(this.selectedCategory?.title || "", []),
-      label: new FormControl(this.selectedCategory?.label || "", [])
-    });
-  }
 
   public onCategoriesChanged(categories: any): void {
     categories = JSON.parse(JSON.stringify(categories));
@@ -47,9 +32,7 @@ export class OrganizeComponent implements OnInit {
   }
 
   public onCategoryClicked(title: string): void {
-    console.log(title);
     this.selectedCategory = this.categories.find((category: ECS.Category) => category.title === title);
-    console.log(this.selectedCategory);
   }
 
   public saveCategories(): void {
